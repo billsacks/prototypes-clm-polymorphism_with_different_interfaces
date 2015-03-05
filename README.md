@@ -78,8 +78,10 @@ What is my preference?
 Hover over this to see my current preference. I'm doing this as a spoiler,
 because I'd like you to formulate your own opinions first.
 
->! I lean towards Option 4 right now. This prevents the need for having lots of
->unused arguments in each implementation, and needing to keep the interfaces in
->sync between all of the implementations. The main downside is that you need to
->put a wrapper in a separate module. However, a wrapper module is needed anyway
->for the factory method, so I do not feel that this is too big of a downside.
+
+
+>!I lean towards Option 4 right now. This prevents the need for having lots of
+>!unused arguments in each implementation, and needing to keep the interfaces in
+>!sync between all of the implementations. The main downside is that you need to
+>!put a wrapper in a separate module. However, a wrapper module is needed anyway
+>!for the factory method, so I do not feel that this is too big of a downside.
