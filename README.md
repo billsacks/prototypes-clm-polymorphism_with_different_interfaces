@@ -46,6 +46,27 @@ implementation
   contain only the arguments that are actually needed by this
   implementation. This would do away with con #2, for the most part.
 
+e.g., in the fire example, this would mean that, for fire_method1, we would
+have:
+
+    subroutine do_fire(this, precip, temperature, soil_moisture)
+      class(fire_method1_type), intent(inout) :: this
+      real, intent(in) :: precip
+      real, intent(in) :: temperature   ! IGNORED!
+      real, intent(in) :: soil_moisture
+
+      call this%do_fire_method1(precip=precip, soil_moisture=soil_moisture)
+    end subroutine do_fire
+
+    subroutine do_fire_method1(this, precip, soil_moisture)
+      class(fire_method1_type), intent(inout) :: this
+      real, intent(in) :: precip
+      real, intent(in) :: soil_moisture
+
+      this%fire = precip + soil_moisture
+    end subroutine do_fire_method1
+
+
 
 Option 2: Use a non-object-oriented wrapper that accepts all possible arguments, but then dispatches to the correct method using a 'select type' statement
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -55,11 +76,11 @@ Option 2: Use a non-object-oriented wrapper that accepts all possible arguments,
 From the point of view of the caller, this is similar to option 1, except now
 the call would not use object-oriented syntax; i.e., rather than calling:
 
-    call some_inst%do\_something(...)
+    call some_inst%do_something(...)
 
 callers would call:
 
-    call do\_something\_wrapper(some_inst, ...)
+    call do_something_wrapper(some_inst, ...)
 
 and then do\_something\_wrapper would have code like:
 
