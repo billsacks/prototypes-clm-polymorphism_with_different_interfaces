@@ -245,4 +245,9 @@ However, a disadvantage is the oddity of having a basically empty base class.
 
 Overall, I think I like this better than Option 2.
 
-
+Note: As with option 2, if the individual implementations did not have any state
+specific to that implementation, then we wouldn't need a "strategy" object
+(i.e., the fire\_method object in this example). Instead, the do\_fire routine
+in the 'fire' module would dispatch to the appropriate non-object-oriented
+subroutine using a simple 'select case' statement rather than the current
+'select type' statement.
