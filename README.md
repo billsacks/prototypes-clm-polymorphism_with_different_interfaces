@@ -10,9 +10,10 @@ parameterizations) have different interfaces, in terms of the input variables
 they require? I cannot see a straightforward way to do this using
 polymorphism. These prototypes explore some alternatives.
 
-I am most inclined towards Option #1 or Option #2. These are the two I provide
-examples for. I am including other options here for completeness, but right now
-I feel that the downsides of the other options outweigh the upsides.
+I am most inclined towards Option #1, Option #2 or Option #5. These are the
+three I provide examples for. I am including other options here for
+completeness, but right now I feel that the downsides of the other options
+outweigh the upsides.
 
 
 
@@ -217,4 +218,31 @@ we could have 'use' statements that use particular objects that are needed as
 inputs in this implementation.
 
 Mariana has cast a resounding NO vote against this option.
+
+
+Option 5: Blend Option 2 with a strategy-esque pattern
+------------------------------------------------------
+
+**Example implementation: See the option5 directory**
+
+This is similar to Option 2, but now, rather than having a non-object-oriented
+"dispatcher" module, that functionality is moved into the fire type. In
+addition, rather than having the specific fire implementations extend a base
+fire type, we instead have a fire type that *contains* a fire method
+strategy. This is similar to the "strategy" design pattern. However, in contrast
+to typical implementations of the "strategy" pattern, here I am NOT defining an
+interface in the base class, but am instead relying on a "select type" statement
+to dispatch the call appropriately. The reason for this is to allow each
+implementation to have its own interface. (As a side-note: The Gang of Four
+Design Patterns book suggests that it's okay to have unused arguments in some
+implementations of the strategy pattern [p. 322].)
+
+An advantage compared to Option 2 is that the calling style looks the same even
+with this extra wrapper level. Also, it does away with the need for a
+"dispatcher" module.
+
+However, a disadvantage is the oddity of having a basically empty base class.
+
+Overall, I think I like this better than Option 2.
+
 
