@@ -250,4 +250,8 @@ specific to that implementation, then we wouldn't need a "strategy" object
 (i.e., the fire\_method object in this example). Instead, the do\_fire routine
 in the 'fire' module would dispatch to the appropriate non-object-oriented
 subroutine using a simple 'select case' statement rather than the current
-'select type' statement.
+'select type' statement. Each do_fire routine could be in its own module (which
+could help clarify things if there were multiple routines associated with a
+given method), or they could all be in the main fire.F90 module. In the latter
+case, the design would include only one fire module: fire.F90.
+
