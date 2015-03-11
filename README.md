@@ -10,6 +10,13 @@ parameterizations) have different interfaces, in terms of the input variables
 they require? I cannot see a straightforward way to do this using
 polymorphism. These prototypes explore some alternatives.
 
+Note that I'm really thinking about the case where each implementation has some
+data that are specific to that implementation. That is the case where I think it
+really makes sense to use object orientation & polymorphism, as opposed to a
+purely procedural solution. However, this example does not actually illustrate
+that case. So imagine that each of the two fire implementations has some of its
+own, private data.
+
 I am most inclined towards Option #1, Option #2 or Option #5. These are the
 three I provide examples for. I am including other options here for
 completeness, but right now I feel that the downsides of the other options
