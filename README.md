@@ -106,6 +106,13 @@ of some control flag.) In fact, that old solution is probably preferable in
 cases where we are selecting between state-less routines, since it doesn't
 require invoking object orientation at all. But the solution here may be
 preferable when there is some attached state ('fire' in the provided example.)
+Other advantages of the object-oriented solution are:
+- If some methods have the same interface between different parameterizations,
+  we can use the simpler option (1) for those methods rather than needing to
+  write a dispatcher routine
+- With the procedural implementation, you could accidentally call the wrong
+  parameterization's method in some branch of the `select case` block; the
+  compiler won't let you do that for the OO solution
 
 The wrapper can go in the same module that provides the factory method, since
 this module already needs to know about the individual types (and is the ONLY
