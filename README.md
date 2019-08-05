@@ -113,6 +113,14 @@ Other advantages of the object-oriented solution are:
 - With the procedural implementation, you could accidentally call the wrong
   parameterization's method in some branch of the `select case` block; the
   compiler won't let you do that for the OO solution
+- If some implementations have a common interface whereas others have different
+  interfaces: There would probably be a way to avoid needing to add a new
+  section in the `select type` block for new implementations that share the
+  common interface. (This might involve having the base class have an empty
+  implementation of the common interface, with an `endrun("Not implemented")`
+  call.) One advantage of this is that unit tests could introduce a new
+  unit test-specific implementation without needing to add a clause in the
+  `select type` block.
 
 The wrapper can go in the same module that provides the factory method, since
 this module already needs to know about the individual types (and is the ONLY
